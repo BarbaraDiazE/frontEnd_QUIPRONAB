@@ -11,6 +11,7 @@ h2{
     font-size: 40px;
     text-align: center;
     margin: auto;
+    font-family: Helvetica, Helvetica, monospace;
   } 
 .card {
   /* Add shadows to create the "card" effect */
@@ -43,7 +44,8 @@ CardTop {
   width: 100%;
   font-size: 18px;
   margin-right: 0px;
-  margin-left: 0px;;
+  margin-left: 0px;
+  font-family: Helvetica, Helvetica, monospace;
 }
 .buttonSearch {
   border: none;
@@ -55,14 +57,16 @@ CardTop {
   text-align: center;
   cursor: pointer;
   width: 80%;
+  font-family: Helvetica, Helvetica, monospace;
   font-size: 18px;
 }
 
 .buttonSearch:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-h1card {
+h2card {
   color: colorcrimson;
+  font-family: Helvetica, Helvetica, monospace;
 }
 /* Style the tab buttons */
 .tablink {
@@ -92,6 +96,8 @@ h1card {
   display: none;
   padding: 50px;
   text-align: center;
+  font-family: Helvetica, Helvetica, monospace;
+  font-size: 20pt
 }
 
 
