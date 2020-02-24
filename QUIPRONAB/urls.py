@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
-from Database.views import ServerViews
+from Database.views import ServerViews, About
 
 urlpatterns = [
     url(r"^$", ServerViews.as_view(), name="home page"),
+    url(r"about/", About.as_view(), name="about"),
     path("admin/", admin.site.urls),
 ]
