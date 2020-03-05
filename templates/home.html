@@ -298,87 +298,85 @@
     </script>
 </head>
 
-<body>
+<h1>Kekule.js Tutorial Example: Composer</h1>
 
-    <h1>Kekule.js Tutorial Example: Composer</h1>
+<p>
+    Composer is a full function 2D chemistry editor to modify molecule and other chemistry objects.
+</p>
 
-    <p>
-        Composer is a full function 2D chemistry editor to modify molecule and other chemistry objects.
-    </p>
+<div id="stage">
+    <div id="composer" data-widget="Kekule.Editor.Composer" data-chem-obj="url(#initialMol)" data-resizable="true">
+    </div>
+    <textarea class="Output" id="codeViewer" readonly="true" data-widget="Kekule.Widget.TextArea"></textarea>
+    <div class="FloatClearer"></div>
+</div>
 
-    <div id="stage">
-        <div id="composer" data-widget="Kekule.Editor.Composer" data-chem-obj="url(#initialMol)" data-resizable="true">
-        </div>
-        <textarea class="Output" id="codeViewer" readonly="true" data-widget="Kekule.Widget.TextArea"></textarea>
-        <div class="FloatClearer"></div>
+<div id="setter">
+    <input id="inputFile" type="file" style="display: none" />
+    <div id="operButtons" data-widget="Kekule.Widget.ButtonGroup">
+        <label for="inputFile" data-widget="Kekule.Widget.Button">Load Object</label>
+        <button onclick="runOperation('dumpObject')" data-widget="Kekule.Widget.Button">Get Root</button>
+        <button onclick="runOperation('dumpMolecules')" data-widget="Kekule.Widget.Button">Get Molecules</button>
+        <button onclick="runOperation('dumpSelectedObjects')" data-widget="Kekule.Widget.Button">Get
+            Selection</button>
+        <button onclick="runOperation('exportToViewer')" data-widget="Kekule.Widget.Button">Export to
+            Viewer</button>
+        <button onclick="runOperation('createNewDoc')" data-widget="Kekule.Widget.Button">New Document</button>
+        <button onclick="runOperation('getIsDirty')" data-widget="Kekule.Widget.Button">Check Modification
+            State</button>
+        <button onclick="runOperation('undo')" data-widget="Kekule.Widget.Button">Undo</button>
+        <button onclick="runOperation('redo')" data-widget="Kekule.Widget.Button">Redo</button>
     </div>
 
-    <div id="setter">
-        <input id="inputFile" type="file" style="display: none" />
-        <div id="operButtons" data-widget="Kekule.Widget.ButtonGroup">
-            <label for="inputFile" data-widget="Kekule.Widget.Button">Load Object</label>
-            <button onclick="runOperation('dumpObject')" data-widget="Kekule.Widget.Button">Get Root</button>
-            <button onclick="runOperation('dumpMolecules')" data-widget="Kekule.Widget.Button">Get Molecules</button>
-            <button onclick="runOperation('dumpSelectedObjects')" data-widget="Kekule.Widget.Button">Get
-                Selection</button>
-            <button onclick="runOperation('exportToViewer')" data-widget="Kekule.Widget.Button">Export to
-                Viewer</button>
-            <button onclick="runOperation('createNewDoc')" data-widget="Kekule.Widget.Button">New Document</button>
-            <button onclick="runOperation('getIsDirty')" data-widget="Kekule.Widget.Button">Check Modification
-                State</button>
-            <button onclick="runOperation('undo')" data-widget="Kekule.Widget.Button">Undo</button>
-            <button onclick="runOperation('redo')" data-widget="Kekule.Widget.Button">Redo</button>
-        </div>
-
-        <fieldset>
-            <legend>Options</legend>
-            <p>
-                <label for="checkBoxEnableLoad">
-                    <input type="checkbox" id="checkBoxEnableLoad" />
-                    Enable load data
-                </label>
-                <label for="checkBoxEnableCreateNew">
-                    <input type="checkbox" id="checkBoxEnableCreateNew" />
-                    Enable create new document
-                </label>
-                <label for="checkBoxAllowCreateNewChild">
-                    <input type="checkbox" id="checkBoxAllowCreateNewChild" />
-                    Allow creating new object
-                </label>
-            </p>
-        </fieldset>
-
-        <fieldset>
-            <legend>Common Tool Buttons</legend>
-            <p>
-                <div id="panelCommonToolButtons"></div>
-            </p>
-            <button id="btnSetCommonToolButtons" data-widget="Kekule.Widget.Button">Apply</button>
-        </fieldset>
-        <fieldset>
-            <legend>Chem Tool Buttons</legend>
-            <p>
-                <div id="panelChemToolButtons"></div>
-            </p>
-            <button id="btnSetChemToolButtons" data-widget="Kekule.Widget.Button">Apply</button>
-        </fieldset>
-        <fieldset>
-            <legend>Style Toolbar Components</legend>
-            <p>
-                <div id="panelStyleCompButtons"></div>
-            </p>
-            <button id="btnSetStyleCompButtons" data-widget="Kekule.Widget.Button">Apply</button>
-        </fieldset>
-
-        <fieldset>
-            <legend>Predefined-Settings</legend>
-            <label>
-                <p>
-                    <select id="selectPreset" data-widget="Kekule.Widget.SelectBox"></select>
-                </p>
+    <fieldset>
+        <legend>Options</legend>
+        <p>
+            <label for="checkBoxEnableLoad">
+                <input type="checkbox" id="checkBoxEnableLoad" />
+                Enable load data
             </label>
-        </fieldset>
-    </div>
+            <label for="checkBoxEnableCreateNew">
+                <input type="checkbox" id="checkBoxEnableCreateNew" />
+                Enable create new document
+            </label>
+            <label for="checkBoxAllowCreateNewChild">
+                <input type="checkbox" id="checkBoxAllowCreateNewChild" />
+                Allow creating new object
+            </label>
+        </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Common Tool Buttons</legend>
+        <p>
+            <div id="panelCommonToolButtons"></div>
+        </p>
+        <button id="btnSetCommonToolButtons" data-widget="Kekule.Widget.Button">Apply</button>
+    </fieldset>
+    <fieldset>
+        <legend>Chem Tool Buttons</legend>
+        <p>
+            <div id="panelChemToolButtons"></div>
+        </p>
+        <button id="btnSetChemToolButtons" data-widget="Kekule.Widget.Button">Apply</button>
+    </fieldset>
+    <fieldset>
+        <legend>Style Toolbar Components</legend>
+        <p>
+            <div id="panelStyleCompButtons"></div>
+        </p>
+        <button id="btnSetStyleCompButtons" data-widget="Kekule.Widget.Button">Apply</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Predefined-Settings</legend>
+        <label>
+            <p>
+                <select id="selectPreset" data-widget="Kekule.Widget.SelectBox"></select>
+            </p>
+        </label>
+    </fieldset>
+</div>
 
 </body>
 
