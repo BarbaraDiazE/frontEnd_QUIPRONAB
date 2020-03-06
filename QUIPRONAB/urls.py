@@ -23,6 +23,7 @@ urlpatterns = [
     url(r"^$", ServerViews.as_view(), name="home page"),
     url(r"chemViewer2D/", A.as_view(), name="a"),
     url(r"renderStatic/", B.as_view(), name="render static"),
+    url(r"render3D/", D.as_view(), name = "3D"),
     url(r"about/", About.as_view(), name="about"),
     path("admin/", admin.site.urls),
 ]

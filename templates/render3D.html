@@ -1,0 +1,47 @@
+<!--Render 3D structure-->
+<html manifest1="chemViewer.manifest1">
+<head>
+	<meta charset="UTF-8">
+	<title>3D</title>
+
+	<script src="../static/libs/Three.js"></script>
+	<!---->
+    <script src="../static/libs/kekule/kekule.js?modules=chemWidget,openbabel,indigo"></script>
+	<!---->
+	<link rel="stylesheet" type="text/css" href="../static/libs/kekule/themes/default/kekule.css" />
+    <!--Style-->
+	<script>
+		var chemViewer;
+		function init()
+		{
+			chemViewer = Kekule.Widget.getWidgetById('chemViewer');
+			// adjust size
+			adjustSize();
+			window.onresize = adjustSize;
+            Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function(e){
+				Kekule.OpenBabel.enable();  //.enableOpenBabelFormats();
+			});
+			Kekule.Widget.getWidgetById('btnIndigo').addEventListener('execute', function(e){
+				Kekule.Indigo.enable();
+			});
+		}
+		function adjustSize()
+		{
+			var dim = Kekule.HtmlElementUtils.getViewportDimension(document);
+			var headerDim = Kekule.HtmlElementUtils.getElemClientDimension(document.getElementById('header'));
+			chemViewer.setWidth(dim.width - 10 + 'px').setHeight(dim.height - 10 - headerDim.height + 'px');
+		}
+
+		Kekule.X.domReady(init);
+	</script>
+</head>
+<body>
+        <h1>Render a chemical structure</h1>
+        <div class="container">   
+        <h2>3D</h2>     
+        <span style="display:block;width:400px;height:400px" data-widget="Kekule.ChemWidget.Viewer3D"
+        data-chem-obj="url(../static/chemFiles/3D/cyclohexane.mol)" data-predefined-setting="basic" data-caption="cyclohexane"></span>
+        <h2>from a mol file</h2> 
+        </div>
+</body>
+</html>

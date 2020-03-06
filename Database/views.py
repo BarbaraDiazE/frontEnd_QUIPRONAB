@@ -20,6 +20,10 @@ class B(APIView):
     def get(self, request):
         return render(request, "renderStatic.html")
 
+class D(APIView):
+    def get(self, request):
+        return render(request, "render3D.html")
+
 class About(APIView):
     def get(self, request):
         return render(request, "about.html")
