@@ -1,0 +1,80 @@
+<!--Render statical chemical structure from mol file-->
+<html manifest1="chemViewer.manifest1">
+<head>
+	<meta charset="UTF-8">
+	<title>A</title>
+
+	<script src="../static/libs/raphael-min.2.0.1.js"></script>
+
+	<script src="../static/libs/kekule/kekule.js?modules=chemWidget,openbabel,indigo"></script>
+	<!--
+	<script src="../../../../project/src/kekule.js?modules=chemWidget,openbabel&min=false"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="../static/libs/kekule/themes/default/kekule.css" />
+
+    <!--Style-->
+	<style>
+		html, body
+		{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+        h1{
+            color:darkblue;
+        }
+		#header
+		{
+			padding: 0.2em 1em;
+			overflow: hidden;
+			vertical-align: middle;
+		}
+		#header button, #header span
+		{
+			display: inline-block;
+		}
+		#chemViewer
+		{
+			border: 1px solid #ccc;
+		}
+		#btnOpenBabel, #btnIndigo
+		{
+			width: 20em;
+		}
+	</style>
+    <!--var chemViewer-->
+	<script>
+		var chemViewer;
+		function init()
+		{
+			chemViewer = Kekule.Widget.getWidgetById('chemViewer');
+			// adjust size
+			adjustSize();
+			window.onresize = adjustSize;
+            Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function(e){
+				Kekule.OpenBabel.enable();  //.enableOpenBabelFormats();
+			});
+			Kekule.Widget.getWidgetById('btnIndigo').addEventListener('execute', function(e){
+				Kekule.Indigo.enable();
+			});
+		}
+		function adjustSize()
+		{
+			var dim = Kekule.HtmlElementUtils.getViewportDimension(document);
+			var headerDim = Kekule.HtmlElementUtils.getElemClientDimension(document.getElementById('header'));
+			chemViewer.setWidth(dim.width - 10 + 'px').setHeight(dim.height - 10 - headerDim.height + 'px');
+		}
+
+		Kekule.X.domReady(init);
+	</script>
+</head>
+<body>
+        <h1>Render a chemical structure</h1>
+        <div class="container">   
+        <h2>Static view</h2>     
+        <span style="display:block" data-widget="Kekule.ChemWidget.Viewer2D"
+        data-chem-obj="url(../static/chemFiles/pyrrole.mol)" data-predefined-setting="static" data-auto-size="true"></span>
+        <h2>from a mol file</h2> 
+        </div>
+</body>
+</html>

@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
-from Database.views import ServerViews, About, A
+from Database.views import *
 
 urlpatterns = [
     url(r"^$", ServerViews.as_view(), name="home page"),
     url(r"chemViewer2D/", A.as_view(), name="a"),
+    url(r"renderStatic/", B.as_view(), name="render static"),
     url(r"about/", About.as_view(), name="about"),
     path("admin/", admin.site.urls),
 ]
