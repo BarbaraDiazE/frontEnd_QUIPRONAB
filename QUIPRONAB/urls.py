@@ -21,7 +21,7 @@ from Database.views import ServerViews, About, A
 
 urlpatterns = [
     url(r"^$", ServerViews.as_view(), name="home page"),
-    url(r"a/", A.as_view(), name="a"),
+    url(r"chemViewer2D/", A.as_view(), name="a"),
     url(r"about/", About.as_view(), name="about"),
     path("admin/", admin.site.urls),
 ]

@@ -14,7 +14,7 @@ class ServerViews(APIView):
 
 class A(APIView):
     def get(self, request):
-        return render(request, "a.html")
+        return render(request, "chemViewer2D.html")
 class About(APIView):
     def get(self, request):
         return render(request, "about.html")
