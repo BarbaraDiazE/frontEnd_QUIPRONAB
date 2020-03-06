@@ -12,6 +12,9 @@ class ServerViews(APIView):
     def get(self, request):
         return render(request, "home.html")
 
+class A(APIView):
+    def get(self, request):
+        return render(request, "a.html")
 class About(APIView):
     def get(self, request):
         return render(request, "about.html")
