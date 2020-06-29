@@ -1,5 +1,7 @@
+{% load static %}
 <!--Render statical chemical structure from mol file-->
 <html manifest1="chemViewer.manifest1">
+
 <head>
 	<meta charset="UTF-8">
 	<title>A</title>
@@ -12,54 +14,55 @@
 	-->
 	<link rel="stylesheet" type="text/css" href="../static/libs/kekule/themes/default/kekule.css" />
 
-    <!--Style-->
+	<!--Style-->
 	<style>
-		html, body
-		{
+		html,
+		body {
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
 		}
-        h1{
-            color:darkblue;
-        }
-		#header
-		{
+
+		h1 {
+			color: darkblue;
+		}
+
+		#header {
 			padding: 0.2em 1em;
 			overflow: hidden;
 			vertical-align: middle;
 		}
-		#header button, #header span
-		{
+
+		#header button,
+		#header span {
 			display: inline-block;
 		}
-		#chemViewer
-		{
+
+		#chemViewer {
 			border: 1px solid #ccc;
 		}
-		#btnOpenBabel, #btnIndigo
-		{
+
+		#btnOpenBabel,
+		#btnIndigo {
 			width: 20em;
 		}
 	</style>
-    <!--var chemViewer-->
+	<!--var chemViewer-->
 	<script>
 		var chemViewer;
-		function init()
-		{
+		function init() {
 			chemViewer = Kekule.Widget.getWidgetById('chemViewer');
 			// adjust size
 			adjustSize();
 			window.onresize = adjustSize;
-            Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function(e){
+			Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function (e) {
 				Kekule.OpenBabel.enable();  //.enableOpenBabelFormats();
 			});
-			Kekule.Widget.getWidgetById('btnIndigo').addEventListener('execute', function(e){
+			Kekule.Widget.getWidgetById('btnIndigo').addEventListener('execute', function (e) {
 				Kekule.Indigo.enable();
 			});
 		}
-		function adjustSize()
-		{
+		function adjustSize() {
 			var dim = Kekule.HtmlElementUtils.getViewportDimension(document);
 			var headerDim = Kekule.HtmlElementUtils.getElemClientDimension(document.getElementById('header'));
 			chemViewer.setWidth(dim.width - 10 + 'px').setHeight(dim.height - 10 - headerDim.height + 'px');
@@ -68,13 +71,15 @@
 		Kekule.X.domReady(init);
 	</script>
 </head>
+
 <body>
-        <h1>Render a chemical structure</h1>
-        <div class="container">   
-        <h2>Static view</h2>     
-        <span style="display:block" data-widget="Kekule.ChemWidget.Viewer2D"
-        data-chem-obj="url(../static/chemFiles/pyrrole.mol)" data-predefined-setting="static" data-auto-size="true"></span>
-        <h2>from a mol file</h2> 
-        </div>
+	<h1>Render a chemical structure</h1>
+	<div class="container">
+		<h2>Static view</h2>
+		<span style="display:block" data-widget="Kekule.ChemWidget.Viewer2D" data-chem-obj="{{ mol_location }}"
+			data-predefined-setting="static" data-auto-size="true"></span>
+		<h2>from a mol file</h2>
+	</div>
 </body>
+
 </html>
